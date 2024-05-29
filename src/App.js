@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { CardList } from './components/CardList';
 
+// El componente principal `App` inicializa la lista de personas y la pasa al componente `CardList`.
 function App() {
+  // Estado para almacenar la lista de personas
+  const [persons, setPersons] = useState([
+    { id: 1, name: "Oscar Eduardo", role: "Frontend Developer", img: "https://bootdey.com/img/Content/avatar/avatar6.png" },
+    { id: 2, name: "Carolina", role: "Backend Developer", img: "https://bootdey.com/img/Content/avatar/avatar3.png" },
+    { id: 3, name: "Catalina", role: "UI/UX Designer", img: "https://bootdey.com/img/Content/avatar/avatar8.png" }
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className='container'>
+        {/* Renderiza el componente `CardList` y le pasa las personas y la función para actualizarlas */}
+        <CardList persons={persons} setPersons={setPersons} />
+      </div>
     </div>
   );
 }
