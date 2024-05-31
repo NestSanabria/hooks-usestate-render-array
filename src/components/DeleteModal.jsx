@@ -17,9 +17,9 @@ const DeleteModal = ({ personToDelete, confirmDelete, cancelDelete }) => (
         </div>
         <div className='modal-footer'>
           {/* Botón para cancelar la eliminación */}
-          <button type="button" className='btn btn-secondary' data-bs-dismiss="modal" onClick={cancelDelete}>Cancelar</button>
+          <button style={{ backgroundColor: 'blue', color: 'white' }} type="button" className='btn btn-secondary' data-bs-dismiss="modal" onClick={cancelDelete}>Cancelar</button>
           {/* Botón para confirmar la eliminación */}
-          <button type="button" className='btn btn-danger' data-bs-dismiss="modal" onClick={confirmDelete}>Eliminar</button>
+          <button style={{ backgroundColor: 'green', color: 'white' }} type="button" className='btn btn-danger' data-bs-dismiss="modal" onClick={confirmDelete}>Eliminar</button>
         </div>
       </div>
     </div>

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import './App.css';
 import { CardList } from './components/CardList';
+import HombreImg from './images/Hombre.jpg';
+import MujerImg from './images/Mujer.jpg';
 
 // El componente principal `App` inicializa la lista de personas y la pasa al componente `CardList`.
 function App() {
   // Estado para almacenar la lista de personas
   const [persons, setPersons] = useState([
-    { id: 1, name: "Oscar Eduardo", role: "Frontend Developer", img: "https://bootdey.com/img/Content/avatar/avatar6.png" },
-    { id: 2, name: "Carolina", role: "Backend Developer", img: "https://bootdey.com/img/Content/avatar/avatar3.png" },
-    { id: 3, name: "Catalina", role: "UI/UX Designer", img: "https://bootdey.com/img/Content/avatar/avatar8.png" }
+    { id: 1, name: "Oscar Eduardo", role: "Frontend Developer", img: HombreImg },
+    { id: 2, name: "Valentina", role: "Backend Developer", img: MujerImg },
+    { id: 3, name: "Catalina", role: "UI/UX Designer", img: MujerImg }
   ]);
 
   return (

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Person } from './Person';
 import EditForm from './EditForm';
 import DeleteModal from './DeleteModal';
+import HombreImg from '../images/Hombre.jpg'; // Importa la imagen para hombres
+import MujerImg from '../images/Mujer.jpg'; // Importa la imagen para mujeres
 
 // El componente `CardList` gestiona la lista de personas y la funcionalidad de editar, crear y eliminar personas.
 // Utiliza estados para gestionar la persona que se está editando, la nueva persona y la persona que se va a eliminar.
@@ -9,7 +11,7 @@ export const CardList = ({ persons, setPersons }) => {
   // Estado para el ID de la persona que se está editando
   const [editingId, setEditingID] = useState(null);
   // Estado para los datos de la persona que se está editando o creando
-  const [editedPerson, setEditedPerson] = useState({ name: '', role: '', img: '' });
+  const [editedPerson, setEditedPerson] = useState({ name: '', role: '', gender: '' });
   // Estado para controlar si se está editando
   const [isEditing, setIsEditing] = useState(false);
   // Estado para la persona que se va a eliminar
@@ -31,9 +33,15 @@ export const CardList = ({ persons, setPersons }) => {
 
   // Guarda los cambios de una persona editada
   const handleSave = () => {
-    setPersons(persons.map(person => person.id === editingId ? editedPerson : person));
+    // Asignar la imagen correcta según el género seleccionado
+    const updatedPerson = {
+      ...editedPerson,
+      img: editedPerson.gender === 'hombre' ? HombreImg : MujerImg
+    };
+
+    setPersons(persons.map(person => person.id === editingId ? updatedPerson : person));
     setEditingID(null);
-    setEditedPerson({ name: '', role: '', img: '' });
+    setEditedPerson({ name: '', role: '', img: '', gender: '' });
     setIsEditing(false);
   };
 
@@ -55,8 +63,14 @@ export const CardList = ({ persons, setPersons }) => {
 
   // Crea una nueva persona y la añade a la lista
   const handleCreate = () => {
-    setPersons([...persons, { id: persons.length + 1, ...editedPerson }]);
-    setEditedPerson({ name: '', role: '', img: '' });
+    const newPerson = {
+      ...editedPerson,
+      id: persons.length + 1,
+      // Asigna la imagen según el género seleccionado
+      img: editedPerson.gender === 'hombre' ? HombreImg : MujerImg
+    };
+    setPersons([...persons, newPerson]);
+    setEditedPerson({ name: '', role: '', gender: '' });
   };
 
   return (
@@ -95,4 +109,5 @@ export const CardList = ({ persons, setPersons }) => {
     </div>
   );
 };
+
 

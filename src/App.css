@@ -17,3 +17,8 @@
 .App-link {
   color: #61dafb;
 }
+
+/* App.css */
+.placeholder-white {
+  color: white; /* Cambia el color del placeholder a blanco */
+}
